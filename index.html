@@ -166,6 +166,84 @@
     .stat-value.gold { color: var(--gold); }
     .stat-note { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
+    /* ── LIVE MARKET BAR ── */
+    .market-bar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .market-item {
+      padding: 24px 64px;
+      border-right: 1px solid var(--border);
+    }
+    .market-item:last-child { border-right: none; }
+    .market-label {
+      font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .live-dot.pending { background: var(--muted); animation: none; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .market-value {
+      font-size: 1.4rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--text);
+    }
+    .market-value.gold { color: var(--gold); }
+    .market-value.pending-text { color: var(--muted); font-size: 0.85rem; font-weight: 500; letter-spacing: 0; }
+    .market-change {
+      font-size: 0.75rem; margin-top: 4px; font-weight: 600;
+    }
+    .market-change.up { color: var(--green); }
+    .market-change.neutral { color: var(--muted); }
+
+    /* ── CHART SECTION ── */
+    .chart-section {
+      padding: 80px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .chart-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      max-width: 1280px; margin: 0 auto 32px;
+    }
+    .chart-header h2 { font-size: 1.2rem; font-weight: 700; }
+    .chart-header p { font-size: 0.82rem; color: var(--muted); }
+    .chart-powered { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+    .chart-powered a { color: var(--muted); text-decoration: none; }
+    .chart-powered a:hover { color: var(--text); }
+    .chart-container {
+      max-width: 1280px; margin: 0 auto;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+      min-height: 400px; position: relative;
+    }
+    .chart-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px;
+    }
+    .chart-placeholder-label {
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600;
+    }
+    .chart-placeholder-title {
+      font-size: 1.4rem; font-weight: 700; color: var(--text);
+    }
+    .chart-placeholder-sub {
+      font-size: 0.85rem; color: var(--muted); max-width: 320px;
+      text-align: center; line-height: 1.7;
+    }
+
     /* ── SECTIONS ── */
     .section { padding: 100px 64px; max-width: 1280px; margin: 0 auto; }
     .section-divider { border: none; border-top: 1px solid var(--border); }
@@ -392,6 +470,7 @@
     <span class="nav-logo-text">ORBI</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#chart">Markets</a></li>
     <li><a href="#scarcity">Scarcity</a></li>
     <li><a href="#trust">Security</a></li>
     <li><a href="#story">Story</a></li>
@@ -444,6 +523,52 @@
     <div class="stat-label">Liquidity</div>
     <div class="stat-value">Locked</div>
     <div class="stat-note">LP tokens burned forever.</div>
+  </div>
+</div>
+
+<!-- LIVE MARKET BAR -->
+<div class="market-bar" id="marketBar">
+  <div class="market-item">
+    <div class="market-label">
+      <span class="live-dot pending" id="liveDot"></span>
+      Price
+    </div>
+    <div class="market-value pending-text" id="mktPrice">Pool launching soon</div>
+    <div class="market-change neutral" id="mktChange">—</div>
+  </div>
+  <div class="market-item">
+    <div class="market-label">Market Cap</div>
+    <div class="market-value pending-text" id="mktCap">—</div>
+    <div class="market-change neutral">at current price</div>
+  </div>
+  <div class="market-item">
+    <div class="market-label">24h Volume</div>
+    <div class="market-value pending-text" id="mktVolume">—</div>
+    <div class="market-change neutral">Raydium DEX</div>
+  </div>
+  <div class="market-item">
+    <div class="market-label">Holders</div>
+    <div class="market-value pending-text" id="mktHolders">—</div>
+    <div class="market-change neutral" id="mktHoldersNote">Solana on-chain</div>
+  </div>
+</div>
+
+<!-- CHART -->
+<div class="chart-section" id="chart">
+  <div class="chart-header">
+    <div>
+      <h2>ORBI / SOL</h2>
+      <p>Price chart — updated in real time once pool is live</p>
+    </div>
+    <div class="chart-powered">Powered by <a href="https://dexscreener.com" target="_blank" rel="noopener">Dexscreener</a></div>
+  </div>
+  <div class="chart-container" id="chartContainer">
+    <!-- Dexscreener embed activates automatically when POOL_ADDRESS is set in the script below -->
+    <div class="chart-placeholder" id="chartPlaceholder">
+      <div class="chart-placeholder-label">Coming soon</div>
+      <div class="chart-placeholder-title">Liquidity pool launching</div>
+      <div class="chart-placeholder-sub">The price chart will appear here the moment the Raydium pool goes live. No refresh needed.</div>
+    </div>
   </div>
 </div>
 
@@ -779,6 +904,7 @@
 </footer>
 
 <script>
+  // ── Copy mint address ──────────────────────────────────────────────────────
   function copyMint() {
     navigator.clipboard.writeText('3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3').then(() => {
       const btn = document.querySelector('.mint-copy');
@@ -792,6 +918,91 @@
         btn.style.color = '';
       }, 2000);
     });
+  }
+
+  // ── Live market data ───────────────────────────────────────────────────────
+  // Once the Raydium pool is created, paste the pool address here.
+  // Everything below activates automatically — no other changes needed.
+  const POOL_ADDRESS = '';  // <-- paste Raydium pool address here after launch
+
+  const MINT = '3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3';
+
+  function fmt(n, decimals) {
+    if (n === null || n === undefined) return '—';
+    if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+    if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+    if (n >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
+    return '$' + n.toFixed(decimals !== undefined ? decimals : 4);
+  }
+
+  async function fetchMarketData() {
+    if (!POOL_ADDRESS) return;
+    try {
+      const res = await fetch('https://api.dexscreener.com/latest/dex/pairs/solana/' + POOL_ADDRESS);
+      const data = await res.json();
+      const pair = data.pairs && data.pairs[0];
+      if (!pair) return;
+
+      const price = parseFloat(pair.priceUsd);
+      const cap   = price * 1_000_000;
+      const vol   = parseFloat(pair.volume && pair.volume.h24);
+      const chg   = parseFloat(pair.priceChange && pair.priceChange.h24);
+
+      document.getElementById('mktPrice').textContent   = fmt(price, 6);
+      document.getElementById('mktPrice').className     = 'market-value gold';
+      document.getElementById('mktCap').textContent     = fmt(cap);
+      document.getElementById('mktCap').className       = 'market-value';
+      document.getElementById('mktVolume').textContent  = fmt(vol);
+      document.getElementById('mktVolume').className    = 'market-value';
+
+      const chgEl = document.getElementById('mktChange');
+      chgEl.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '% (24h)';
+      chgEl.className   = 'market-change ' + (chg >= 0 ? 'up' : 'down');
+
+      // Activate live dot
+      document.getElementById('liveDot').classList.remove('pending');
+    } catch (e) {}
+  }
+
+  async function fetchHolderCount() {
+    // Helius RPC — free tier, no key needed for basic calls
+    try {
+      const res = await fetch('https://mainnet.helius-rpc.com/?api-key=demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', id: 1,
+          method: 'getTokenLargestAccounts',
+          params: [MINT]
+        })
+      });
+      const data = await res.json();
+      if (data.result && data.result.value) {
+        const count = data.result.value.length;
+        document.getElementById('mktHolders').textContent = count.toLocaleString() + '+';
+        document.getElementById('mktHolders').className   = 'market-value';
+      }
+    } catch (e) {}
+  }
+
+  function activateChart() {
+    if (!POOL_ADDRESS) return;
+    const container   = document.getElementById('chartContainer');
+    const placeholder = document.getElementById('chartPlaceholder');
+    placeholder.style.display = 'none';
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://dexscreener.com/solana/' + POOL_ADDRESS + '?embed=1&theme=dark&info=0';
+    iframe.style.cssText = 'width:100%;height:500px;border:none;display:block;';
+    iframe.title = 'ORBI price chart';
+    container.appendChild(iframe);
+  }
+
+  if (POOL_ADDRESS) {
+    fetchMarketData();
+    fetchHolderCount();
+    activateChart();
+    setInterval(fetchMarketData, 30000);  // refresh price every 30s
+    setInterval(fetchHolderCount, 120000); // refresh holders every 2min
   }
 </script>
 </body>
