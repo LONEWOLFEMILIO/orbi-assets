@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Gold gradient for orbital ring -->
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#A86500"/>
+      <stop offset="30%"  stop-color="#FFD000"/>
+      <stop offset="60%"  stop-color="#FFE566"/>
+      <stop offset="100%" stop-color="#CC8C00"/>
+    </linearGradient>
+
+    <!-- Gold gradient for ORBI text -->
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B87800"/>
+    </linearGradient>
+
+    <!-- Clip: ring hidden behind the O — upper-right region -->
+    <clipPath id="behind">
+      <rect x="0" y="0" width="500" height="212"/>
+    </clipPath>
+
+    <!-- Clip: ring visible in front of the O — lower-left region -->
+    <clipPath id="front">
+      <rect x="0" y="212" width="500" height="288"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="500" height="500" fill="#000000"/>
+
+  <!-- ── Orbital ring: back arc (drawn first, O covers it) ── -->
+  <ellipse
+    cx="250" cy="215"
+    rx="148" ry="22"
+    transform="rotate(-22, 250, 215)"
+    fill="none"
+    stroke="url(#goldRing)"
+    stroke-width="13"
+    stroke-linecap="round"
+    clip-path="url(#behind)"
+    opacity="0.75"
+  />
+
+  <!-- ── The O letter: thick white annulus ── -->
+  <circle cx="250" cy="205" r="95" fill="none" stroke="white" stroke-width="40"/>
+
+  <!-- ── Orbital ring: front arc (drawn on top of O) ── -->
+  <ellipse
+    cx="250" cy="215"
+    rx="148" ry="22"
+    transform="rotate(-22, 250, 215)"
+    fill="none"
+    stroke="url(#goldRing)"
+    stroke-width="13"
+    stroke-linecap="round"
+    clip-path="url(#front)"
+  />
+
+  <!-- ── ORBI text ── -->
+  <text
+    x="250" y="390"
+    font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
+    font-weight="900"
+    font-size="82"
+    fill="url(#goldText)"
+    text-anchor="middle"
+    letter-spacing="10"
+  >ORBI</text>
+</svg>
