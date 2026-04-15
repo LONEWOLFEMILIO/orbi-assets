@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ORBI — The Orbital Meme Coin of Solana</title>
-  <meta name="description" content="ORBI is a fixed-supply Solana meme coin. 1,000,000 tokens. Mint revoked. No inflation. Ever. In orbit forever."/>
+  <meta name="description" content="ORBI is a fixed-supply Solana token. 1,000,000 tokens. Mint revoked. No inflation. Ever."/>
   <meta property="og:title" content="ORBI — In Orbit. Forever."/>
   <meta property="og:description" content="Fixed supply. Mint revoked. No inflation. The orbital meme coin of Solana."/>
   <meta property="og:image" content="https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png"/>
@@ -12,153 +12,374 @@
     :root {
       --gold: #FFD000;
       --gold-light: #FFE566;
-      --gold-dark: #CC8C00;
+      --gold-dark: #B8920A;
       --bg: #000000;
-      --bg3: #0f0f0f;
-      --border: #1a1a1a;
+      --bg2: #080808;
+      --bg3: #0d0d0d;
+      --border: #1c1c1c;
+      --border2: #242424;
       --text: #ffffff;
-      --muted: #888888;
-      --green: #4ade80;
+      --muted: #6b6b6b;
+      --muted2: #999999;
+      --green: #22c55e;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; background: rgba(0,0,0,0.9); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,208,0,0.1); }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { width: 38px; height: 38px; }
-    .nav-logo span { font-size: 1.4em; font-weight: 900; background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 3px; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9em; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta { background: var(--gold); color: #000; padding: 10px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9em; letter-spacing: 1px; transition: all 0.2s; }
-    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-    /* HERO */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(255,208,0,0.07) 0%, transparent 65%); pointer-events: none; }
-    .hero-logo { width: 150px; height: 150px; margin-bottom: 32px; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 0 40px rgba(255,208,0,0.35)); will-change: transform; }
-    @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
-    .hero-eyebrow { font-size: 0.75em; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
-    .hero h1 { font-size: clamp(3em, 8vw, 7em); font-weight: 900; letter-spacing: -2px; line-height: 1; background: linear-gradient(135deg, #ffffff 0%, #FFE566 50%, #CC8C00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
-    .hero-sub { font-size: clamp(1em, 2.5vw, 1.3em); color: var(--muted); max-width: 580px; line-height: 1.8; margin-bottom: 20px; }
-    .hero-sub strong { color: var(--text); }
-    .scarcity-line { font-size: 1.1em; color: var(--gold); font-weight: 700; margin-bottom: 48px; letter-spacing: 1px; }
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
-    .btn-primary { background: var(--gold); color: #000; padding: 16px 36px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1em; letter-spacing: 1px; transition: all 0.2s; border: 2px solid var(--gold); }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,208,0,0.3); }
-    .btn-secondary { background: transparent; color: var(--text); padding: 16px 36px; border-radius: 8px; border: 2px solid var(--border); font-weight: 700; text-decoration: none; font-size: 1em; letter-spacing: 1px; transition: all 0.2s; }
-    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-    .mint-badge { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 14px 24px; display: flex; align-items: center; gap: 12px; font-size: 0.85em; flex-wrap: wrap; justify-content: center; }
-    .mint-badge span { color: var(--muted); }
-    .mint-badge code { font-family: monospace; color: var(--gold); font-size: 0.95em; }
-    .copy-btn { cursor: pointer; color: var(--muted); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border); font-size: 0.85em; background: none; transition: all 0.2s; }
-    .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* TICKER */
-    .ticker { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
-    .ticker-inner { display: inline-flex; gap: 60px; animation: ticker 22s linear infinite; font-weight: 700; color: #000; font-size: 0.85em; letter-spacing: 2px; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+    p { line-height: 1.75; }
 
-    /* UNIT BIAS */
-    .unit-bias { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .unit-bias-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
-    .big-number { font-size: clamp(4em, 10vw, 8em); font-weight: 900; background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 16px; }
-    .big-number-label { font-size: 1.1em; color: var(--muted); line-height: 1.7; }
-    .big-number-label strong { color: white; }
-    .comparison-cards { display: flex; flex-direction: column; gap: 16px; }
-    .comparison-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .comparison-card.orbi { border-color: rgba(255,208,0,0.4); }
-    .cc-name { font-weight: 700; font-size: 0.95em; }
-    .cc-supply { font-size: 0.85em; color: var(--muted); }
-    .cc-badge { font-size: 0.75em; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
-    .badge-rare { background: rgba(255,208,0,0.15); color: var(--gold); }
-    .badge-common { background: rgba(100,100,100,0.15); color: var(--muted); }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 64px; height: 64px;
+      background: rgba(0,0,0,0.92);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 32px; height: 32px; }
+    .nav-logo-text {
+      font-size: 1rem; font-weight: 800;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--gold); color: #000;
+      padding: 8px 20px; border-radius: 4px;
+      font-weight: 700; text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.08em;
+      text-transform: uppercase; transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
 
-    /* LOCK SECTION */
-    .lock-section { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .lock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px; }
-    .lock-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; transition: all 0.2s; }
-    .lock-card:hover { border-color: rgba(255,208,0,0.3); transform: translateY(-3px); }
-    .lock-card .icon { font-size: 2em; margin-bottom: 14px; }
-    .lock-card h3 { font-size: 1em; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-    .lock-card p { color: var(--muted); font-size: 0.9em; line-height: 1.7; }
-    .lock-card .verified { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: 0.8em; font-weight: 700; margin-top: 12px; }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 120px 64px 80px;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 55%; height: 100%;
+      background: radial-gradient(ellipse at 70% 45%, rgba(255,208,0,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-logo-large {
+      width: 72px; height: 72px; margin-bottom: 40px;
+      filter: drop-shadow(0 0 24px rgba(255,208,0,0.2));
+    }
+    .hero-label {
+      font-size: 0.72rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-label::before {
+      content: ''; display: inline-block;
+      width: 24px; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-size: clamp(3.2rem, 6vw, 6rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.0; max-width: 720px;
+      margin-bottom: 28px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted2);
+      max-width: 480px; line-height: 1.8;
+      margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; gap: 12px; margin-bottom: 64px; }
+    .btn-primary {
+      background: var(--gold); color: #000;
+      padding: 13px 28px; border-radius: 4px;
+      font-weight: 700; text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      padding: 13px 28px; border-radius: 4px;
+      border: 1px solid var(--border2);
+      font-weight: 600; text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: border-color 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--muted); }
+    .mint-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 20px; background: var(--bg3);
+      border: 1px solid var(--border); border-radius: 6px;
+    }
+    .mint-row-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .mint-row-addr { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85rem; color: var(--text); }
+    .mint-copy {
+      background: none; border: 1px solid var(--border2);
+      color: var(--muted); cursor: pointer;
+      padding: 5px 12px; border-radius: 3px;
+      font-size: 0.75rem; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: all 0.15s;
+      font-weight: 600;
+    }
+    .mint-copy:hover { border-color: var(--muted); color: var(--text); }
 
-    /* STORY */
-    .story { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 48px; }
-    .story-text p { color: var(--muted); line-height: 1.9; font-size: 1.05em; margin-bottom: 20px; }
-    .story-text p strong { color: white; }
-    .story-quote { border-left: 3px solid var(--gold); padding: 20px 28px; background: var(--bg3); border-radius: 0 8px 8px 0; font-size: 1.15em; font-style: italic; color: var(--text); line-height: 1.7; margin-top: 32px; }
-    .story-cards { display: flex; flex-direction: column; gap: 16px; }
-    .story-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color 0.2s; }
-    .story-card:hover { border-color: rgba(255,208,0,0.3); }
-    .story-card-icon { font-size: 1.5em; margin-bottom: 10px; }
-    .story-card h4 { font-size: 1em; font-weight: 700; margin-bottom: 8px; color: var(--gold); }
-    .story-card p { color: var(--muted); font-size: 0.9em; line-height: 1.6; }
+    /* ── STAT BAR ── */
+    .stat-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      padding: 32px 64px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+    .stat-value { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text); }
+    .stat-value.gold { color: var(--gold); }
+    .stat-note { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
-    /* TOKENOMICS */
-    .tokenomics { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 48px; }
-    .token-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; text-align: center; transition: all 0.2s; }
-    .token-card:hover { border-color: rgba(255,208,0,0.4); transform: translateY(-4px); }
-    .token-card .number { font-size: 2em; font-weight: 900; background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-    .token-card .label { color: var(--muted); font-size: 0.75em; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
-    .token-card .desc { color: var(--text); font-size: 0.9em; margin-top: 8px; font-weight: 500; }
+    /* ── SECTIONS ── */
+    .section { padding: 100px 64px; max-width: 1280px; margin: 0 auto; }
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+    .section-heading { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
+    .section-sub { color: var(--muted2); max-width: 500px; font-size: 1rem; line-height: 1.8; }
 
-    /* HOW TO BUY */
-    .how-to-buy { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
-    .step { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; }
-    .step-num { width: 40px; height: 40px; background: var(--gold); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; margin-bottom: 20px; }
-    .step h3 { font-size: 1.1em; font-weight: 700; margin-bottom: 10px; }
-    .step p { color: var(--muted); font-size: 0.9em; line-height: 1.7; }
-    .step code { background: rgba(255,208,0,0.1); color: var(--gold); padding: 2px 8px; border-radius: 4px; font-size: 0.85em; word-break: break-all; }
+    /* ── SCARCITY ── */
+    .scarcity-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 64px;
+    }
+    .scarcity-left { }
+    .supply-display {
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .supply-unit { font-size: 1rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 32px; }
+    .scarcity-copy { color: var(--muted2); font-size: 1rem; line-height: 1.9; margin-bottom: 24px; }
+    .scarcity-copy strong { color: var(--text); font-weight: 600; }
+    .price-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+    .price-table th {
+      text-align: left; padding: 10px 16px;
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; border-bottom: 1px solid var(--border);
+    }
+    .price-table td {
+      padding: 14px 16px; font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted2);
+    }
+    .price-table td:first-child { color: var(--text); font-weight: 600; }
+    .price-table td.gold { color: var(--gold); font-weight: 700; }
+    .compare-stack { display: flex; flex-direction: column; gap: 2px; }
+    .compare-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px; background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+    .compare-row:first-child { border-radius: 6px 6px 0 0; }
+    .compare-row:last-child { border-radius: 0 0 6px 6px; }
+    .compare-row.highlight {
+      border-color: var(--gold);
+      background: rgba(255,208,0,0.04);
+    }
+    .cr-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .cr-supply { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .cr-tag {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 3px;
+    }
+    .cr-tag.scarce { background: rgba(255,208,0,0.12); color: var(--gold); }
+    .cr-tag.abundant { background: rgba(255,255,255,0.05); color: var(--muted); }
 
-    /* ROADMAP */
-    .roadmap { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
-    .roadmap-list { margin-top: 48px; }
-    .roadmap-item { display: flex; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--border); }
-    .roadmap-item:last-child { border-bottom: none; }
-    .roadmap-phase { min-width: 100px; font-size: 0.75em; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; padding-top: 4px; }
-    .roadmap-content h3 { font-size: 1.1em; font-weight: 700; margin-bottom: 10px; }
-    .roadmap-content ul { list-style: none; }
-    .roadmap-content li { color: var(--muted); font-size: 0.9em; padding: 4px 0; display: flex; align-items: center; gap: 10px; }
-    .roadmap-content li::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-    .phase-done .roadmap-phase { color: var(--green); }
-    .phase-done li::before { background: var(--green); }
+    /* ── TRUST ── */
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--border);
+      margin-top: 64px; border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+    }
+    .trust-card {
+      background: var(--bg3); padding: 36px 40px;
+      transition: background 0.2s;
+    }
+    .trust-card:hover { background: #111111; }
+    .trust-card-num {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; margin-bottom: 20px;
+    }
+    .trust-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+    .trust-card p { color: var(--muted2); font-size: 0.9rem; line-height: 1.75; }
+    .trust-verified {
+      display: inline-block; margin-top: 16px;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green); padding: 4px 10px;
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 3px;
+    }
 
-    /* SOCIALS */
-    .socials-section { padding: 80px 60px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); text-align: center; }
-    .social-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
-    .social-link { display: flex; align-items: center; gap: 10px; background: var(--bg3); border: 1px solid var(--border); padding: 14px 28px; border-radius: 8px; text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95em; transition: all 0.2s; }
-    .social-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    /* ── STORY ── */
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: start; margin-top: 64px;
+    }
+    .story-body { }
+    .story-body p { color: var(--muted2); font-size: 1rem; line-height: 1.9; margin-bottom: 20px; }
+    .story-body p strong { color: var(--text); font-weight: 600; }
+    .story-pullquote {
+      margin-top: 40px; padding: 28px 32px;
+      border-left: 2px solid var(--gold);
+      background: var(--bg3);
+    }
+    .story-pullquote p {
+      font-size: 1.05rem; font-style: italic;
+      color: var(--text); line-height: 1.7; margin: 0;
+    }
+    .story-aside { padding-top: 8px; }
+    .aside-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .aside-item:first-child { padding-top: 0; }
+    .aside-item:last-child { border-bottom: none; }
+    .aside-item h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .aside-item p { color: var(--muted2); font-size: 0.88rem; line-height: 1.75; }
 
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-logo { font-weight: 900; font-size: 1.1em; letter-spacing: 3px; background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    footer p { color: #444; font-size: 0.85em; }
-    .footer-disclaimer { color: #333; }
+    /* ── TOKENOMICS ── */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      margin-top: 64px; border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+    }
+    .token-cell {
+      background: var(--bg3); padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .token-cell:hover { background: #111111; }
+    .token-cell-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+    .token-cell-value { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 6px; }
+    .token-cell-value.gold { color: var(--gold); }
+    .token-cell-desc { font-size: 0.82rem; color: var(--muted); }
 
-    /* SECTION HELPERS */
-    .section-label { font-size: 0.7em; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
-    .section-title { font-size: clamp(2em, 4vw, 3em); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px; }
-    .section-sub { color: var(--muted); line-height: 1.8; max-width: 560px; font-size: 1.05em; }
-    .scarcity-math-card { background: var(--bg3); border: 1px solid rgba(255,208,0,0.3); border-radius: 10px; padding: 20px 24px; }
-    .scarcity-math-title { color: var(--gold); font-weight: 700; margin-bottom: 8px; }
-    .scarcity-math-body { color: var(--muted); font-size: 0.9em; line-height: 1.7; }
-    .scarcity-math-body strong { color: white; }
-    .scarcity-math-body em { color: var(--gold); font-style: normal; }
-    .socials-section .section-sub { margin: 0 auto; }
+    /* ── HOW TO BUY ── */
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; margin-top: 64px;
+    }
+    .step { padding-top: 28px; border-top: 1px solid var(--border); }
+    .step-num { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 20px; }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+    .step p { color: var(--muted2); font-size: 0.88rem; line-height: 1.75; }
+    .step code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.78rem; color: var(--gold); background: rgba(255,208,0,0.08); padding: 2px 6px; border-radius: 3px; word-break: break-all; }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
+    /* ── ROADMAP ── */
+    .roadmap-rows { margin-top: 64px; }
+    .roadmap-row {
+      display: grid; grid-template-columns: 140px 1fr;
+      gap: 40px; padding: 36px 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+    .roadmap-row:last-child { border-bottom: 1px solid var(--border); }
+    .phase-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--muted); padding-top: 2px; }
+    .phase-label.done { color: var(--green); }
+    .roadmap-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; }
+    .roadmap-items { display: flex; flex-direction: column; gap: 6px; }
+    .roadmap-item-row {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.88rem; color: var(--muted2);
+    }
+    .roadmap-item-row .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); flex-shrink: 0; }
+    .roadmap-item-row.done .dot { background: var(--green); }
+    .roadmap-item-row.done { color: var(--text); }
+
+    /* ── COMMUNITY ── */
+    .community-section { padding: 100px 64px; border-top: 1px solid var(--border); }
+    .community-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .community-links { display: flex; flex-direction: column; gap: 2px; }
+    .community-link {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 24px; background: var(--bg3);
+      border: 1px solid var(--border); text-decoration: none;
+      color: var(--text); transition: border-color 0.15s;
+    }
+    .community-link:first-child { border-radius: 6px 6px 0 0; }
+    .community-link:last-child { border-radius: 0 0 6px 6px; }
+    .community-link:hover { border-color: var(--border2); }
+    .cl-name { font-size: 0.9rem; font-weight: 600; }
+    .cl-desc { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .cl-arrow { color: var(--muted); font-size: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 64px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { display: flex; align-items: center; gap: 12px; }
+    .footer-left img { width: 24px; height: 24px; opacity: 0.8; }
+    .footer-wordmark { font-size: 0.8rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
       .nav-links { display: none; }
-      .unit-bias, .lock-section, .story, .tokenomics, .how-to-buy, .roadmap, .socials-section { padding: 60px 20px; }
-      .unit-bias-grid, .story-grid { grid-template-columns: 1fr; gap: 40px; }
-      footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .hero { padding: 100px 24px 60px; }
+      .stat-bar { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .section { padding: 64px 24px; }
+      .scarcity-grid, .story-grid, .community-inner { grid-template-columns: 1fr; gap: 48px; }
+      .token-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .roadmap-row { grid-template-columns: 1fr; gap: 8px; }
+      .community-section { padding: 64px 24px; }
+      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+      .mint-row { flex-wrap: wrap; }
+      .mint-row-addr { font-size: 0.7rem; word-break: break-all; }
     }
   </style>
 </head>
@@ -168,278 +389,408 @@
 <nav>
   <a class="nav-logo" href="#">
     <img src="https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png" alt="ORBI"/>
-    <span>ORBI</span>
+    <span class="nav-logo-text">ORBI</span>
   </a>
   <ul class="nav-links">
     <li><a href="#scarcity">Scarcity</a></li>
+    <li><a href="#trust">Security</a></li>
     <li><a href="#story">Story</a></li>
     <li><a href="#tokenomics">Tokenomics</a></li>
     <li><a href="#buy">How to Buy</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
   </ul>
   <a class="nav-cta" href="#buy">Buy ORBI</a>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <p class="hero-eyebrow">Now live on Solana mainnet</p>
-  <img class="hero-logo" src="https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png" alt="ORBI"/>
-  <h1>In Orbit.<br/>Forever.</h1>
+<section class="hero">
+  <img class="hero-logo-large"
+    src="https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png"
+    alt="ORBI"/>
+  <p class="hero-label">Now live on Solana mainnet</p>
+  <h1>In Orbit.<br/><span>Forever.</span></h1>
   <p class="hero-sub">
-    While others buy billions of worthless tokens,
-    <strong>the smart money moves into scarcity.</strong>
-    Only 1,000,000 ORBI will ever exist.
-    Mint revoked. Supply sealed. No exceptions.
+    A fixed-supply Solana token built on scarcity, transparency, and permanence.
+    One million tokens. Mint revoked. Liquidity locked. No exceptions.
   </p>
-  <p class="scarcity-line">If 1,000 people each hold 1,000 ORBI — the supply is gone.</p>
-  <div class="hero-buttons">
-    <a class="btn-primary" href="#buy">Buy ORBI Now</a>
-    <a class="btn-secondary" href="#scarcity">Why Scarcity Wins</a>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#buy">Buy ORBI</a>
+    <a class="btn-outline" href="#scarcity">Learn More</a>
   </div>
-  <div class="mint-badge">
-    <span>Mint:</span>
-    <code id="mintAddr">3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3</code>
-    <button type="button" class="copy-btn" onclick="copyMint()">Copy</button>
+  <div class="mint-row">
+    <span class="mint-row-label">Contract</span>
+    <span class="mint-row-addr" id="mintAddr">3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3</span>
+    <button type="button" class="mint-copy" onclick="copyMint()">Copy</button>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-label">Total Supply</div>
+    <div class="stat-value gold">1,000,000</div>
+    <div class="stat-note">Fixed. Cannot increase.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">Mint Authority</div>
+    <div class="stat-value">Revoked</div>
+    <div class="stat-note">Permanently. On-chain.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">Team Allocation</div>
+    <div class="stat-value">None</div>
+    <div class="stat-note">100% circulating supply.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-label">Liquidity</div>
+    <div class="stat-value">Locked</div>
+    <div class="stat-note">LP tokens burned forever.</div>
   </div>
 </div>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span>ORBI — ONLY 1,000,000 EVER</span>
-    <span>✦ MINT AUTHORITY: REVOKED</span>
-    <span>✦ NO INFLATION. NO EXCEPTIONS.</span>
-    <span>✦ LIQUIDITY LOCKED FOREVER</span>
-    <span>✦ SOLANA MAINNET: LIVE</span>
-    <span>✦ ORBI — ONLY 1,000,000 EVER</span>
-    <span>✦ MINT AUTHORITY: REVOKED</span>
-    <span>✦ NO INFLATION. NO EXCEPTIONS.</span>
-    <span>✦ LIQUIDITY LOCKED FOREVER</span>
-    <span>✦ SOLANA MAINNET: LIVE</span>
-  </div>
-</div>
-
-<!-- UNIT BIAS / SCARCITY -->
-<div class="unit-bias" id="scarcity">
-  <p class="section-label">Why Scarcity Wins</p>
-  <h2 class="section-title">1,000,000.<br/>Not a billion. Not a trillion.</h2>
-  <div class="unit-bias-grid">
-    <div>
-      <div class="big-number">1M</div>
-      <p class="big-number-label">
-        That's it. That's all. <strong>One million ORBI tokens exist in the entire universe.</strong>
-        Not locked. Not vesting. Not reserved. All circulating. All community owned.<br/><br/>
-        In a world where projects mint billions of tokens and hand them out like confetti,
-        <strong>ORBI chose a different path — scarcity.</strong><br/><br/>
-        The math is simple: limited supply + growing demand = price discovery that favors early holders.
-        Bitcoin proved it. ORBI builds on it.
+<!-- SCARCITY -->
+<hr class="section-divider"/>
+<div class="section" id="scarcity">
+  <p class="section-tag">Why scarcity matters</p>
+  <h2 class="section-heading">1,000,000.<br/>Not a billion. Not a trillion.</h2>
+  <div class="scarcity-grid">
+    <div class="scarcity-left">
+      <div class="supply-display">1M</div>
+      <div class="supply-unit">Total ORBI — fixed forever</div>
+      <p class="scarcity-copy">
+        Most tokens launch with trillions in supply and trade for fractions of a cent.
+        <strong>ORBI took the opposite approach.</strong>
+        One million tokens. All in circulation from day one.
+        No team reserve. No vesting cliff. No future dilution.
       </p>
+      <p class="scarcity-copy">
+        Low supply means every dollar of buying pressure moves the price more.
+        Bitcoin demonstrated this principle at scale.
+        <strong>ORBI applies it at the meme coin level.</strong>
+      </p>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Market Cap</th>
+            <th>Price per ORBI</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$100,000</td>
+            <td>$0.10</td>
+            <td class="gold">Launch</td>
+          </tr>
+          <tr>
+            <td>$1,000,000</td>
+            <td>$1.00</td>
+            <td class="gold">10x</td>
+          </tr>
+          <tr>
+            <td>$10,000,000</td>
+            <td>$10.00</td>
+            <td class="gold">100x</td>
+          </tr>
+          <tr>
+            <td>$100,000,000</td>
+            <td>$100.00</td>
+            <td class="gold">1,000x</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="comparison-cards">
-      <div class="comparison-card orbi">
-        <div>
-          <div class="cc-name">🪐 ORBI</div>
-          <div class="cc-supply">1,000,000 total supply</div>
+    <div>
+      <div class="compare-stack">
+        <div class="compare-row highlight">
+          <div>
+            <div class="cr-name">ORBI</div>
+            <div class="cr-supply">1,000,000 total supply</div>
+          </div>
+          <span class="cr-tag scarce">Ultra Scarce</span>
         </div>
-        <span class="cc-badge badge-rare">Ultra Scarce</span>
-      </div>
-      <div class="comparison-card">
-        <div>
-          <div class="cc-name">Average Meme Coin</div>
-          <div class="cc-supply">1,000,000,000,000 supply</div>
+        <div class="compare-row">
+          <div>
+            <div class="cr-name">Bitcoin</div>
+            <div class="cr-supply">21,000,000 max supply</div>
+          </div>
+          <span class="cr-tag scarce">Scarce</span>
         </div>
-        <span class="cc-badge badge-common">1 Trillion</span>
-      </div>
-      <div class="comparison-card">
-        <div>
-          <div class="cc-name">Bitcoin</div>
-          <div class="cc-supply">21,000,000 max supply</div>
+        <div class="compare-row">
+          <div>
+            <div class="cr-name">Average Meme Coin</div>
+            <div class="cr-supply">1,000,000,000,000 supply</div>
+          </div>
+          <span class="cr-tag abundant">1 Trillion</span>
         </div>
-        <span class="cc-badge badge-rare">Scarce</span>
+        <div class="compare-row">
+          <div>
+            <div class="cr-name">Most Solana Tokens</div>
+            <div class="cr-supply">100,000,000,000+ supply</div>
+          </div>
+          <span class="cr-tag abundant">100+ Billion</span>
+        </div>
       </div>
-      <div class="scarcity-math-card">
-        <p class="scarcity-math-title">The Scarcity Math</p>
-        <p class="scarcity-math-body">
-          If ORBI reaches a $1M market cap — each token is worth <strong>$1.00</strong>.<br/>
-          At $10M — each token is worth <strong>$10.00</strong>.<br/>
-          At $100M — each token is worth <strong>$100.00</strong>.<br/>
-          <em>Low supply means every dollar of demand moves the price more.</em>
+      <div style="margin-top: 32px; padding: 24px; border: 1px solid var(--border); border-radius: 6px;">
+        <div class="stat-label" style="margin-bottom: 12px;">The Unit Bias Principle</div>
+        <p style="color: var(--muted2); font-size: 0.88rem; line-height: 1.8;">
+          If 1,000 people each hold 1,000 ORBI — the entire supply is distributed.
+          At that point, no single person can crash the market.
+          That is the endgame: a distributed, scarce asset held by a community
+          that understands what it owns.
         </p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TRUST / LOCK -->
-<div class="lock-section">
-  <p class="section-label">Trust & Security</p>
-  <h2 class="section-title">Built for holders.<br/>Not for exits.</h2>
-  <p class="section-sub">Every decision ORBI makes is designed to protect holders and build long-term trust. No rug pulls. No hidden wallets. No surprises.</p>
-  <div class="lock-grid">
-    <div class="lock-card">
-      <div class="icon">🔥</div>
-      <h3>LP Tokens Burned</h3>
-      <p>When the liquidity pool is created, the LP tokens are permanently burned. No one — including the team — can ever drain the pool. The liquidity is locked forever on-chain.</p>
-      <div class="verified">✓ Verifiable on Solana Explorer</div>
-    </div>
-    <div class="lock-card">
-      <div class="icon">🔒</div>
+<!-- TRUST / SECURITY -->
+<hr class="section-divider"/>
+<div class="section" id="trust">
+  <p class="section-tag">Security &amp; Trust</p>
+  <h2 class="section-heading">No rug pulls.<br/>No hidden exits.</h2>
+  <p class="section-sub">Every trust-critical action was taken at launch and is permanently verifiable on the Solana blockchain by anyone.</p>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-card-num">01</div>
       <h3>Mint Authority Revoked</h3>
-      <p>The mint authority was permanently revoked at launch. No new ORBI can ever be created. The 1,000,000 supply is mathematically sealed into the Solana blockchain.</p>
-      <div class="verified">✓ Verifiable on-chain now</div>
+      <p>The mint authority was permanently revoked at deployment. No new ORBI can ever be created. This is not a promise — it is a mathematical constraint written into the Solana blockchain, readable by any explorer.</p>
+      <span class="trust-verified">Verified on-chain</span>
     </div>
-    <div class="lock-card">
-      <div class="icon">📖</div>
-      <h3>Open Source</h3>
-      <p>All ORBI code is public on GitHub. Every transaction, every wallet, every decision is visible to anyone in the world. Full transparency, zero surprises.</p>
-      <div class="verified">✓ GitHub: LONEWOLFEMILIO</div>
+    <div class="trust-card">
+      <div class="trust-card-num">02</div>
+      <h3>LP Tokens Burned</h3>
+      <p>When the liquidity pool is created, the LP receipt tokens are sent to a burn address. No entity — including the founding team — can ever withdraw the liquidity. The pool floor is permanent.</p>
+      <span class="trust-verified">Verifiable on Explorer</span>
     </div>
-    <div class="lock-card">
-      <div class="icon">⚖️</div>
+    <div class="trust-card">
+      <div class="trust-card-num">03</div>
+      <h3>No Team Allocation</h3>
+      <p>One hundred percent of the supply entered circulation at launch. There is no team wallet, no vesting schedule, no advisor allocation, and no reserved treasury. Every ORBI in existence is community-owned.</p>
+      <span class="trust-verified">Transparent distribution</span>
+    </div>
+    <div class="trust-card">
+      <div class="trust-card-num">04</div>
       <h3>Standard SPL Token</h3>
-      <p>No hidden functions. No owner backdoors. No upgrade keys. ORBI is a plain, auditable Solana SPL token — the same standard used by the most trusted projects.</p>
-      <div class="verified">✓ Standard SPL, no tricks</div>
+      <p>ORBI is a plain Solana SPL token with no custom logic, no owner functions, no upgrade keys, and no hidden mechanisms. The same auditable standard used by the most trusted projects on Solana.</p>
+      <span class="trust-verified">Open source</span>
     </div>
   </div>
 </div>
 
 <!-- STORY -->
-<div class="story" id="story">
-  <p class="section-label">The Origin</p>
-  <h2 class="section-title">Why ORBI exists</h2>
+<hr class="section-divider"/>
+<div class="section" id="story">
+  <p class="section-tag">The origin</p>
+  <h2 class="section-heading">Why ORBI exists</h2>
   <div class="story-grid">
-    <div class="story-text">
-      <p>In a universe crowded with tokens that appear like shooting stars and vanish just as fast — <strong>ORBI was built differently.</strong></p>
-      <p>Most meme coins print tokens endlessly. Teams hold back supply. Whales dump on early believers. The cycle repeats. <strong>ORBI breaks that cycle.</strong></p>
-      <p>From the moment it launched, the mint authority was permanently revoked. No more ORBI can ever be created. The 1,000,000 that exist today are the <strong>only 1,000,000 that will ever exist.</strong> Not a promise — a mathematical fact locked into Solana forever.</p>
-      <p>Planets don't negotiate their orbit. They don't dilute their gravity. They just pull. <strong>ORBI is the same.</strong></p>
-      <div class="story-quote">"In a universe of infinite tokens, ORBI is the one that never leaves orbit."</div>
+    <div class="story-body">
+      <p>In a market saturated with tokens that appear like shooting stars and vanish within weeks, <strong>ORBI was built on a single premise: permanence.</strong></p>
+      <p>Most projects launch with billions of tokens, reserve large allocations for teams and investors, and mint new supply whenever it is convenient. The result is predictable — early holders get diluted, trust erodes, and the project fades.</p>
+      <p><strong>ORBI made a different set of decisions.</strong> One million tokens. All circulating at launch. Mint authority revoked before the first trade. Liquidity locked so it cannot be drained. No complexity. No hidden mechanisms. Just a clean, permanent, scarce asset on Solana.</p>
+      <p>Planets do not negotiate their orbit. They do not ask for permission to exert gravity. They simply exist, pulling everything around them into alignment. <strong>ORBI is built on the same principle.</strong></p>
+      <div class="story-pullquote">
+        <p>"In a universe of infinite tokens, ORBI is the one that never leaves orbit."</p>
+      </div>
     </div>
-    <div class="story-cards">
-      <div class="story-card">
-        <div class="story-card-icon">🔒</div>
-        <h4>Mint Authority Revoked</h4>
-        <p>No entity can ever mint more ORBI. This is permanent and verifiable on-chain by anyone, anytime.</p>
+    <div class="story-aside">
+      <div class="aside-item">
+        <h4>The Problem</h4>
+        <p>Ninety percent of meme coins fail within 60 days. The primary cause is not lack of community — it is lack of trust. Teams hold back supply, drain liquidity, and leave holders with nothing.</p>
       </div>
-      <div class="story-card">
-        <div class="story-card-icon">⚖️</div>
-        <h4>No Team Allocation</h4>
-        <p>100% of supply entered circulation at launch. No team vesting, no advisor cuts, no reserved treasury.</p>
+      <div class="aside-item">
+        <h4>The Decision</h4>
+        <p>ORBI was designed so that no single decision after launch can harm holders. Mint revoked. Liquidity locked. Supply fixed. These are not promises. They are on-chain facts.</p>
       </div>
-      <div class="story-card">
-        <div class="story-card-icon">🔥</div>
-        <h4>Liquidity Burned</h4>
-        <p>LP tokens are burned on pool creation. Liquidity can never be removed. The floor is permanent.</p>
-      </div>
-      <div class="story-card">
-        <div class="story-card-icon">🪐</div>
-        <h4>Standard SPL Token</h4>
-        <p>No hidden functions, no backdoors. Auditable by anyone. The cleanest token structure on Solana.</p>
+      <div class="aside-item">
+        <h4>The Endgame</h4>
+        <p>A community of holders who understand scarcity and hold a fixed asset that cannot be inflated. One million tokens. Distributed. Permanent. In orbit — forever.</p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- TOKENOMICS -->
-<div class="tokenomics" id="tokenomics">
-  <p class="section-label">Tokenomics</p>
-  <h2 class="section-title">Simple. Clean. Unbreakable.</h2>
-  <p class="section-sub">No complex allocations. No vesting schedules. No hidden wallets. The cleanest tokenomics in the solar system.</p>
+<hr class="section-divider"/>
+<div class="section" id="tokenomics">
+  <p class="section-tag">Tokenomics</p>
+  <h2 class="section-heading">Clean by design.</h2>
+  <p class="section-sub">No complex allocations. No vesting schedules. No unlocks. The simplest tokenomics structure possible.</p>
   <div class="token-grid">
-    <div class="token-card"><div class="number">1M</div><div class="label">Total Supply</div><div class="desc">Fixed forever</div></div>
-    <div class="token-card"><div class="number">100%</div><div class="label">Circulating</div><div class="desc">All in circulation</div></div>
-    <div class="token-card"><div class="number">0%</div><div class="label">Team Tokens</div><div class="desc">No allocation</div></div>
-    <div class="token-card"><div class="number">REVOKED</div><div class="label">Mint Authority</div><div class="desc">Permanently locked</div></div>
-    <div class="token-card"><div class="number">BURNED</div><div class="label">LP Tokens</div><div class="desc">Liquidity locked forever</div></div>
-    <div class="token-card"><div class="number">SOL</div><div class="label">Blockchain</div><div class="desc">Solana mainnet</div></div>
+    <div class="token-cell">
+      <div class="token-cell-label">Total Supply</div>
+      <div class="token-cell-value gold">1,000,000</div>
+      <div class="token-cell-desc">Fixed. Cannot increase.</div>
+    </div>
+    <div class="token-cell">
+      <div class="token-cell-label">Circulating Supply</div>
+      <div class="token-cell-value">100%</div>
+      <div class="token-cell-desc">All tokens in circulation at launch.</div>
+    </div>
+    <div class="token-cell">
+      <div class="token-cell-label">Team Allocation</div>
+      <div class="token-cell-value">0%</div>
+      <div class="token-cell-desc">No reserved team tokens.</div>
+    </div>
+    <div class="token-cell">
+      <div class="token-cell-label">Mint Authority</div>
+      <div class="token-cell-value">Revoked</div>
+      <div class="token-cell-desc">Permanently. On-chain.</div>
+    </div>
+    <div class="token-cell">
+      <div class="token-cell-label">Liquidity Tokens</div>
+      <div class="token-cell-value">Burned</div>
+      <div class="token-cell-desc">LP tokens sent to burn address.</div>
+    </div>
+    <div class="token-cell">
+      <div class="token-cell-label">Blockchain</div>
+      <div class="token-cell-value">Solana</div>
+      <div class="token-cell-desc">SPL token standard. 9 decimals.</div>
+    </div>
   </div>
 </div>
 
 <!-- HOW TO BUY -->
-<div class="how-to-buy" id="buy">
-  <p class="section-label">Get ORBI</p>
-  <h2 class="section-title">How to Buy</h2>
-  <p class="section-sub">Four steps to enter orbit. Takes less than 5 minutes.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">1</div><h3>Get Phantom Wallet</h3><p>Download <strong>Phantom</strong> from phantom.app. Create your wallet and back up your seed phrase somewhere safe offline.</p></div>
-    <div class="step"><div class="step-num">2</div><h3>Buy SOL</h3><p>Purchase SOL on Coinbase, Binance, or OKX. Send it to your Phantom wallet address. You need SOL to swap for ORBI.</p></div>
-    <div class="step"><div class="step-num">3</div><h3>Go to Raydium</h3><p>Visit <strong>raydium.io/swap</strong> and paste the ORBI mint address to find the token and start trading.</p></div>
-    <div class="step"><div class="step-num">4</div><h3>Swap SOL → ORBI</h3><p>Enter your amount, confirm in Phantom, and you're in orbit.<br/><br/><code>3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3</code></p></div>
+<hr class="section-divider"/>
+<div class="section" id="buy">
+  <p class="section-tag">Get started</p>
+  <h2 class="section-heading">How to buy ORBI</h2>
+  <p class="section-sub">Four steps. Takes less than five minutes.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">Step 01</div>
+      <h3>Get a Wallet</h3>
+      <p>Download Phantom from phantom.app. Create your wallet and store your seed phrase offline in a safe location.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 02</div>
+      <h3>Acquire SOL</h3>
+      <p>Buy SOL on Coinbase, Binance, or any major exchange. Transfer it to your Phantom wallet address.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 03</div>
+      <h3>Open Raydium</h3>
+      <p>Visit raydium.io/swap and paste the ORBI contract address to locate the token.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 04</div>
+      <h3>Swap SOL for ORBI</h3>
+      <p>Enter your amount, confirm in Phantom, and you are in orbit. Contract address:<br/><br/>
+        <code>3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3</code>
+      </p>
+    </div>
   </div>
 </div>
 
 <!-- ROADMAP -->
-<div class="roadmap" id="roadmap">
-  <p class="section-label">Roadmap</p>
-  <h2 class="section-title">The Mission</h2>
-  <p class="section-sub">No overpromising. Honest milestones, one orbit at a time.</p>
-  <div class="roadmap-list">
-    <div class="roadmap-item phase-done">
-      <div class="roadmap-phase">Phase 1<br/>Done ✓</div>
-      <div class="roadmap-content"><h3>Launch</h3><ul>
-        <li>Token deployed on Solana mainnet</li>
-        <li>Mint authority permanently revoked</li>
-        <li>On-chain metadata attached (Metaplex)</li>
-        <li>Logo, branding and website live</li>
-      </ul></div>
+<hr class="section-divider"/>
+<div class="section" id="roadmap">
+  <p class="section-tag">Roadmap</p>
+  <h2 class="section-heading">The mission</h2>
+  <p class="section-sub">No overpromising. Honest milestones executed in sequence.</p>
+  <div class="roadmap-rows">
+    <div class="roadmap-row">
+      <div class="phase-label done">Phase 01<br/>Complete</div>
+      <div class="roadmap-content">
+        <h3>Launch</h3>
+        <div class="roadmap-items">
+          <div class="roadmap-item-row done"><div class="dot"></div>Token deployed on Solana mainnet</div>
+          <div class="roadmap-item-row done"><div class="dot"></div>Mint authority permanently revoked</div>
+          <div class="roadmap-item-row done"><div class="dot"></div>On-chain metadata attached via Metaplex</div>
+          <div class="roadmap-item-row done"><div class="dot"></div>Website, branding, and assets live</div>
+        </div>
+      </div>
     </div>
-    <div class="roadmap-item">
-      <div class="roadmap-phase">Phase 2<br/>Now</div>
-      <div class="roadmap-content"><h3>Liquidity & Trading</h3><ul>
-        <li>Raydium ORBI/SOL pool creation</li>
-        <li>LP tokens permanently burned</li>
-        <li>Jupiter aggregator listing</li>
-        <li>Birdeye and Dexscreener auto-listing</li>
-      </ul></div>
+    <div class="roadmap-row">
+      <div class="phase-label">Phase 02<br/>In Progress</div>
+      <div class="roadmap-content">
+        <h3>Liquidity &amp; Trading</h3>
+        <div class="roadmap-items">
+          <div class="roadmap-item-row"><div class="dot"></div>Raydium ORBI/SOL liquidity pool creation</div>
+          <div class="roadmap-item-row"><div class="dot"></div>LP tokens permanently burned</div>
+          <div class="roadmap-item-row"><div class="dot"></div>Jupiter aggregator listing</div>
+          <div class="roadmap-item-row"><div class="dot"></div>Birdeye and Dexscreener auto-listing</div>
+        </div>
+      </div>
     </div>
-    <div class="roadmap-item">
-      <div class="roadmap-phase">Phase 3</div>
-      <div class="roadmap-content"><h3>Community Growth</h3><ul>
-        <li>Twitter / X community building</li>
-        <li>Telegram group launch</li>
-        <li>Meme campaign — viral content push</li>
-        <li>First 1,000 holders milestone</li>
-      </ul></div>
+    <div class="roadmap-row">
+      <div class="phase-label">Phase 03</div>
+      <div class="roadmap-content">
+        <h3>Community Growth</h3>
+        <div class="roadmap-items">
+          <div class="roadmap-item-row"><div class="dot"></div>Twitter / X community building campaign</div>
+          <div class="roadmap-item-row"><div class="dot"></div>Telegram community launch</div>
+          <div class="roadmap-item-row"><div class="dot"></div>First 1,000 holders milestone</div>
+          <div class="roadmap-item-row"><div class="dot"></div>Jupiter verified token list submission</div>
+        </div>
+      </div>
     </div>
-    <div class="roadmap-item">
-      <div class="roadmap-phase">Phase 4</div>
-      <div class="roadmap-content"><h3>Expansion</h3><ul>
-        <li>CoinGecko and CoinMarketCap listing</li>
-        <li>Influencer partnerships</li>
-        <li>10,000 holders milestone</li>
-        <li>CEX listing exploration</li>
-      </ul></div>
+    <div class="roadmap-row">
+      <div class="phase-label">Phase 04</div>
+      <div class="roadmap-content">
+        <h3>Expansion</h3>
+        <div class="roadmap-items">
+          <div class="roadmap-item-row"><div class="dot"></div>CoinGecko listing</div>
+          <div class="roadmap-item-row"><div class="dot"></div>CoinMarketCap listing</div>
+          <div class="roadmap-item-row"><div class="dot"></div>Strategic partnerships and influencer outreach</div>
+          <div class="roadmap-item-row"><div class="dot"></div>CEX listing exploration</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- SOCIALS -->
-<div class="socials-section" id="community">
-  <p class="section-label">Community</p>
-  <h2 class="section-title">Join the Orbit</h2>
-  <p class="section-sub">The community is everything. Join us and help ORBI reach escape velocity.</p>
-  <div class="social-links">
-    <a class="social-link" href="https://twitter.com/orbitoken" target="_blank">𝕏 &nbsp; Twitter / X</a>
-    <a class="social-link" href="https://t.me/orbitoken" target="_blank">✈ &nbsp; Telegram</a>
-    <a class="social-link" href="https://explorer.solana.com/address/3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3" target="_blank">🔍 &nbsp; Explorer</a>
-    <a class="social-link" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3" target="_blank">⚡ &nbsp; Buy on Raydium</a>
+<!-- COMMUNITY -->
+<div class="community-section" id="community">
+  <div class="community-inner">
+    <div>
+      <p class="section-tag">Community</p>
+      <h2 class="section-heading">Join the orbit</h2>
+      <p class="section-sub">The community is the only thing that matters. Join us and help ORBI reach escape velocity.</p>
+    </div>
+    <div class="community-links">
+      <a class="community-link" href="https://twitter.com/orbitoken" target="_blank" rel="noopener">
+        <div><div class="cl-name">Twitter / X</div><div class="cl-desc">@orbitoken — updates, announcements, community</div></div>
+        <span class="cl-arrow">&#8599;</span>
+      </a>
+      <a class="community-link" href="https://t.me/orbitoken" target="_blank" rel="noopener">
+        <div><div class="cl-name">Telegram</div><div class="cl-desc">Official community chat</div></div>
+        <span class="cl-arrow">&#8599;</span>
+      </a>
+      <a class="community-link" href="https://explorer.solana.com/address/3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3" target="_blank" rel="noopener">
+        <div><div class="cl-name">Solana Explorer</div><div class="cl-desc">Verify everything on-chain</div></div>
+        <span class="cl-arrow">&#8599;</span>
+      </a>
+      <a class="community-link" href="https://raydium.io/swap/?inputCurrency=SOL&outputCurrency=3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3" target="_blank" rel="noopener">
+        <div><div class="cl-name">Buy on Raydium</div><div class="cl-desc">Swap SOL for ORBI</div></div>
+        <span class="cl-arrow">&#8599;</span>
+      </a>
+    </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">ORBI</div>
-  <p>© 2026 ORBI Token · Solana Mainnet · Mint Revoked · LP Burned · No Inflation Ever</p>
-  <p class="footer-disclaimer">Not financial advice. DYOR.</p>
+  <div class="footer-left">
+    <img src="https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png" alt="ORBI"/>
+    <span class="footer-wordmark">ORBI</span>
+  </div>
+  <p>Solana Mainnet &middot; Mint Revoked &middot; LP Burned &middot; No Inflation</p>
+  <p>Not financial advice. Do your own research.</p>
 </footer>
 
 <script>
   function copyMint() {
     navigator.clipboard.writeText('3cpa5snKGifSprgqRKPbbdcGzGKZxzg5uswLMacTp3J3').then(() => {
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = 'Copied!';
-      btn.style.color = '#FFD000';
-      setTimeout(() => { btn.textContent = 'Copy'; btn.style.color = ''; }, 2000);
+      const btn = document.querySelector('.mint-copy');
+      const original = btn.textContent;
+      btn.textContent = 'Copied';
+      btn.style.borderColor = 'var(--gold)';
+      btn.style.color = 'var(--gold)';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
     });
   }
 </script>
