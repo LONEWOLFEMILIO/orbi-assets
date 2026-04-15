@@ -1,0 +1,44 @@
+{
+  "name": "Orbi",
+  "symbol": "ORBI",
+  "description": "ORBI — The orbital meme coin of the Solana ecosystem. Fixed supply of 1,000,000. Mint revoked. No inflation. Ever.",
+  "image": "https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png",
+  "external_url": "https://orbitoken.io",
+  "attributes": [
+    {
+      "trait_type": "Blockchain",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "Standard",
+      "value": "SPL Token"
+    },
+    {
+      "trait_type": "Supply",
+      "value": "1,000,000"
+    },
+    {
+      "trait_type": "Mint Authority",
+      "value": "Revoked"
+    },
+    {
+      "trait_type": "Decimals",
+      "value": "9"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/LONEWOLFEMILIO/orbi-assets/main/logo.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": []
+  },
+  "extensions": {
+    "website": "https://orbitoken.io",
+    "twitter": "https://twitter.com/orbitoken",
+    "telegram": "https://t.me/orbitoken"
+  }
+}
