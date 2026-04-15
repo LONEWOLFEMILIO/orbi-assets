@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="60%" stop-color="#0a0010"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A86500"/>
+      <stop offset="40%" stop-color="#FFD000"/>
+      <stop offset="70%" stop-color="#FFE566"/>
+      <stop offset="100%" stop-color="#CC8C00"/>
+    </linearGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE566"/>
+      <stop offset="100%" stop-color="#CC8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textglow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="rb"><rect x="0" y="0" width="1500" height="258"/></clipPath>
+    <clipPath id="rf"><rect x="0" y="258" width="1500" height="242"/></clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <circle cx="120" cy="60" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="340" cy="120" r="1" fill="white" opacity="0.4"/>
+  <circle cx="890" cy="40" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="1100" cy="90" r="1" fill="white" opacity="0.4"/>
+  <circle cx="1300" cy="150" r="2" fill="white" opacity="0.3"/>
+  <circle cx="1420" cy="60" r="1" fill="white" opacity="0.5"/>
+  <circle cx="700" cy="420" r="1.5" fill="white" opacity="0.4"/>
+  <circle cx="950" cy="460" r="1" fill="white" opacity="0.3"/>
+  <circle cx="200" cy="380" r="1" fill="white" opacity="0.4"/>
+  <circle cx="80" cy="300" r="1.5" fill="white" opacity="0.3"/>
+  <circle cx="1380" cy="400" r="1" fill="white" opacity="0.5"/>
+  <circle cx="500" cy="80" r="1" fill="white" opacity="0.4"/>
+  <circle cx="1200" cy="300" r="1.5" fill="white" opacity="0.3"/>
+
+  <!-- Subtle orbit ring decoration in background -->
+  <ellipse cx="250" cy="250" rx="600" ry="150" fill="none" stroke="#FFD000" stroke-width="1" opacity="0.04"/>
+  <ellipse cx="250" cy="250" rx="480" ry="120" fill="none" stroke="#FFD000" stroke-width="1" opacity="0.03"/>
+
+  <!-- Logo: ring behind O -->
+  <ellipse cx="250" cy="268" rx="148" ry="22" transform="rotate(-22,250,268)"
+    fill="none" stroke="url(#gold)" stroke-width="13" stroke-linecap="round"
+    clip-path="url(#rb)" opacity="0.65" filter="url(#glow)"/>
+
+  <!-- Logo: O letter -->
+  <circle cx="250" cy="255" r="95" fill="none" stroke="white" stroke-width="40"/>
+
+  <!-- Logo: ring front -->
+  <ellipse cx="250" cy="268" rx="148" ry="22" transform="rotate(-22,250,268)"
+    fill="none" stroke="url(#gold)" stroke-width="13" stroke-linecap="round"
+    clip-path="url(#rf)" filter="url(#glow)"/>
+
+  <!-- Orbiting dot -->
+  <circle cx="397" cy="268" r="8" fill="#FFD700" filter="url(#glow)"/>
+
+  <!-- ORBI wordmark -->
+  <text x="420" y="230"
+    font-family="'Arial Black', Arial, sans-serif"
+    font-weight="900" font-size="110"
+    fill="url(#goldText)"
+    letter-spacing="8"
+    filter="url(#textglow)">ORBI</text>
+
+  <!-- Tagline -->
+  <text x="422" y="290"
+    font-family="Arial, sans-serif"
+    font-weight="400" font-size="28"
+    fill="#a0a0b0"
+    letter-spacing="4">THE ORBITAL MEME COIN OF SOLANA</text>
+
+  <!-- Divider line -->
+  <line x1="422" y1="315" x2="1050" y2="315" stroke="#FFD700" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Stats row -->
+  <text x="422" y="360" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">1,000,000</text>
+  <text x="422" y="385" font-family="Arial, sans-serif" font-size="16" fill="#7a7a8a">FIXED SUPPLY</text>
+
+  <text x="620" y="360" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">REVOKED</text>
+  <text x="620" y="385" font-family="Arial, sans-serif" font-size="16" fill="#7a7a8a">MINT AUTHORITY</text>
+
+  <text x="820" y="360" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">SOLANA</text>
+  <text x="820" y="385" font-family="Arial, sans-serif" font-size="16" fill="#7a7a8a">BLOCKCHAIN</text>
+
+  <text x="1000" y="360" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="white">NO INFLATION</text>
+  <text x="1000" y="385" font-family="Arial, sans-serif" font-size="16" fill="#7a7a8a">EVER</text>
+
+  <!-- Bottom tagline -->
+  <text x="422" y="450"
+    font-family="Arial, sans-serif"
+    font-size="20" fill="#FFD700" opacity="0.8"
+    font-style="italic">In orbit. Forever.</text>
+</svg>
